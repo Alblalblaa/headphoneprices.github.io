@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>留言區</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #727272;
+            border-radius: 5px;
+        }
+        .comment .name {
+            font-weight: bold;
+        }
+        .comment .date {
+            font-size: 0.8em;
+            color: #292929;
+        }
+        .comment .message {
+            margin-top: 5px;
+        }
+        body {
+            background-image: linear-gradient(to bottom, rgb(44, 44, 44), rgb(174, 174, 174));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: "宋体", ;
+            height: 100%;
+            margin: 0;
+            padding: 0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+            padding-top: 50px;
+            
+        }
+        .clothes_text{
+            font-size: 21px;
+            font-weight: bold;
+        }
+        .navbar-collapse {
+        display: flex; /* 設置選單項目水平排列 */
+        justify-content: flex-start; /* 將選單項目靠右對齊 */
+        }
+        .navbar-nav {
+        list-style: none; /* 移除選單項目的預設符號 */
+        margin: 0;
+        padding: 0;
+        }
+        .navbar-nav li {
+        margin-right: 10px; /* 選單項目之間的右邊間距 */
+        display: inline-block; /* 將選單項目水平排列 */
+        font-size: 25px;
+        }
+        .navbar-nav li a:hover {
+        background-color: #ffffff; /* 選單項目懸停時的背景顏色 */
+        }
+        .navbar-nav li a.active {
+        font-weight: bold; /* 選單項目選中時的文字加粗 */
+        }
+        .navbar-nav li a {
+        text-decoration: none; /* 移除連結底線 */
+        color: #000000; /* 選單項目文字顏色 */
+        padding: 5px 10px; /* 選單項目內容的上下左右間距 */
+        }
+        
+        .nav-link {
+         position: relative;
+        }
+
+        .nav-link::after {
+         content: "";
+         position: absolute;
+         left: 0;
+         bottom: -2px;
+         width: 100%;
+         height: 2px;
+         background-color: #92aada;
+         transform: scaleX(0);
+         transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after {
+         transform: scaleX(1);
+        }
+        header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(255, 255, 255);
+        z-index: 999;
+        padding: 3px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        }
+        h2{
+            font-size: 30px;
+        }
+        h3{
+            font-size: 20px;
+            text-align: left;
+        }
+        #commentForm label {
+    font-weight: bold;
+}
+
+#commentForm input[type="text"],
+#commentForm textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#commentForm button[type="submit"] {
+    background-color: #24375a;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#commentForm button[type="submit"]:hover {
+    background-color: #6293c7;
+}
+        .clothes_item {
+    display: flex;
+    justify-content: center;
+}
+
+.clothes_img {
+    margin: auto;
+}
+.container {
+    text-align: left;
+}
+
+#comments {
+    margin-top: 2px; 
+}
+footer {
+            background-color: rgb(51, 49, 58);
+            color: rgb(199, 199, 199);
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+    </style>
+     <script>
+        $(document).ready(function() {
+            // 留言提交表單時的事件處理
+            $('#commentForm').submit(function(event) {
+                event.preventDefault();
+
+                var name = $('#name').val();
+                var message = $('#message').val();
+
+                // 建立留言區塊的 HTML
+                var commentHTML = '<div class="comment">' +
+                                    '<span class="name">' + name + '</span>' +
+                                    '<span class="date">' + getCurrentDate() + '</span>' +
+                                    '<div class="message">' + message + '</div>' +
+                                '</div>';
+
+                $('#comments').append(commentHTML);
+
+                // 清空表單數據
+                $('#name').val('');
+                $('#message').val('');
+            });
+
+            // 獲取當前日期時間的函數
+            function getCurrentDate() {
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = now.getMonth() + 1;
+                var day = now.getDate();
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+                return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes  ;
+            }
+        });
+    </script>
+</head>
+<header>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./cart_empty.html">HOME</a>
+          </li>
+          
+        </ul>
+      </div>
+    </header>
+<body>
+    <div class="clothes_item">
+       
+         <a href="https://blog.jollybuy.com/3Cproducts/samsung-bluetooth-headsets-recommendation"><img class="clothes_img" src="./images/____________4.________________________-_____________.jpg"  alt=""></a>
+        
+        
+        
+    </div>
+    <div>
+        <a href="https://blog.jollybuy.com/3Cproducts/audio-technica-earphone-recommendation"><img class="clothes_img" src="./images/____________2.___________________________-_____________.jpeg"  alt=""></a>
+    </div>
+    <div><a href="https://blog.jollybuy.com/3Cproducts/sony-earphone-recommendation"><img class="clothes_img" src="./images/____________5.sony__________________-_____________.jpg"  alt=""></a></div>
+<br><br><br>
+<div class="container">
+    <h2>CONTACT US</h2>
+    <div id="comments"></div>
+
+    <form id="commentForm">
+        <label for="name">user name:</label>
+        <input type="text" id="name" required><br><br>
+        <label for="message">message:</label><br>
+        <textarea id="message" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">SEND</button>
+    </form>
+</div>
+<footer >
+    Headphone Analysis © LAF 2023<br>
+    @ Lu_cas1.0.2.3 | @ alblalb__wu | @ fk__my__life
+    
+  </footer>
+   
+</body>
+</html>
